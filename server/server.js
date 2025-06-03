@@ -57,3 +57,5 @@ const errorHandler = (
 server.listen(config.port, () =>
   console.log("Development server and WebSocket listening on port 8080..."),
 );
+
+export default app;

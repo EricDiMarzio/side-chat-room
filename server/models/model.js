@@ -6,7 +6,7 @@ dotenv.config();
 const openConnection = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI, {
-            // sets the name of the DB that our collections are part of
+            // sets the name of the DB that our collections are in
             dbName: 'database-54'
         });
         console.log('connected to MongoDB database');
@@ -15,9 +15,8 @@ const openConnection = async () => {
         throw err;
     }
 }
-
+// Destructuring -- otherwise we would need 'new mongoose.Schema...' below
 const { Schema } = mongoose;
-
 
 // Schemas
 const chatSchema = new Schema({
@@ -27,7 +26,7 @@ const chatSchema = new Schema({
 })
 
 // Models
-
+// References existing collection or creates one if 'chat' isn't found
 const Chat = mongoose.models.chat || mongoose.model('chat', chatSchema)
 
 export {

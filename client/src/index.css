@@ -150,6 +150,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   height: 75px;
+  gap: 1rem;
+  padding: 0 .51rem;
 }
 .inputSection textarea {
   flex-grow: 1;
