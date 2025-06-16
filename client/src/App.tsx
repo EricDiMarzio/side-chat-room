@@ -69,11 +69,34 @@ const App = () => {
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
     }
   }, [user, posts]);
+
+  // ? Using LocalStorage for persistent Login
+  const handleLogin = (username:string) => {
+    setUser(username)
+    // set localStorage
+    localStorage.setItem('user', username)
+  }
+
+  // check for user in Local Storage on mount
+  useEffect(()=> {
+    const user = localStorage.getItem('user')
+    if (user) setUser(user)
+  },[])
+  
+  // handle logout
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+
+  }
+
+
   if (user) {
     return (
       <div className="App">
         <header className="header">
           <h3>{`Welcome, ${user}`}</h3>
+          <button onClick={handleLogout}> Logout</button>
         </header>
         <section ref={chatRef} className="chatWindow">
           {posts.map((post, i) => (
@@ -84,7 +107,7 @@ const App = () => {
       </div>
     );
   } else {
-    return <Login setUser={setUser} />;
+    return <Login handleLogin={handleLogin} />;
   }
 };
 

@@ -20,7 +20,6 @@ chatController.getChat = async (req, res, next) => {
 chatController.addNewPost = async (req, res, next) => {
     try {
         const body = req.body;
-        res.locals.newMessage = body;
         //  const { name, email, age } = req.body;
         const newPost = new Chat(body);
         const savedUser = await newPost.save();

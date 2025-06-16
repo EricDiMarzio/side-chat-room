@@ -112,6 +112,8 @@ button:focus-visible {
 
   display: flex;
   gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
 }
 .chatWindow {
   background: var(--chat-window-color);

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 interface LoginProps {
-  setUser: (user: string) => void;
+  handleLogin: (user: string) => void;
 }
 
-export default function Login({ setUser }: LoginProps) {
+export default function Login({ handleLogin }: LoginProps) {
   const [input, setInput] = useState<string>('');
   return (
     <div className="Login">
@@ -13,12 +13,12 @@ export default function Login({ setUser }: LoginProps) {
           setInput(e.target.value);
         }}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-          if (e.key === 'Enter') setUser(input);
+          if (e.key === 'Enter') handleLogin(input);
         }}
         value={input}
         placeholder="username"
       />
-      <button onClick={() => setUser(input)}>Join Chat</button>
+      <button onClick={() =>handleLogin(input)}>Join Chat</button>
     </div>
   );
 }
